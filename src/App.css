@@ -1,38 +1,158 @@
 .App {
-  text-align: center;
+  font-family: "Roboto";
+}
+body {
+  overflow: scroll;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.movie-poster {
+  width: 420px;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.movie-name {
+  font-size: 24px;
+  text-shadow: 2px 2px 5px gray;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container {
+  /* background-color:orange; */
+  /* border:2px solid black;  */
+  border-radius: 18px;
+  width: 430px;
+  background-color: rgb(190, 211, 211);
+
+  /* height: 500px; */
+  padding: 5px;
+  /* height: min-content; */
+}
+.container:hover {
+  cursor: pointer;
+  box-shadow: rgba(20, 10, 10, 10) 0px 54px 55px,
+    rgba(255, 255, 255, 0.12) 0px -12px 30px,
+    rgba(250, 247, 247, 0.12) 0px 4px 6px,
+    rgba(255, 255, 255, 0.17) 0px 12px 13px,
+    rgba(255, 255, 255, 0.09) 0px -3px 5px;
+  position: relative;
+  top: -10px;
+}
+
+.movie-specs {
+  display: flex;
+  justify-content: space-between;
+}
+
+p {
+  padding: 10px;
+  font-family: sans-serif;
+}
+
+.movie-list {
+  display: grid;
+
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(400px, 1fr)
+  ); /*RAM to make responsive*/
+  gap: 2rem;
+  margin-top: 50px;
+}
+span {
+  font-weight: bold;
+  font-size: 18px;
+}
+.summary {
+  font-family: sans-serif;
+  font-size: 20px;
+}
+
+body {
+  background-color: white;
+}
+
+.counter-container {
+  gap: 5px;
+  display: flex;
+}
+.counter-container > button {
+  font-size: 1.2rem;
+  margin-top: 0.2rem;
+}
+
+input {
+  height: 30px;
+  width: 50%;
+}
+
+.add-movie-form {
   display: flex;
   flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  width: 50%;
+  align-items: center;
+}
+button {
+  width: 50%;
+  height: 50px;
+  gap: 0.1rem;
+}
+
+.MuiBox-root {
+  align-items: center;
+  margin-left: 33%;
+}
+.toggle {
+  display: flex;
+  width: 200px;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-left: 0.5%;
+  background-color: rgb(237, 237, 243);
 }
 
-.App-link {
-  color: #61dafb;
+#App {
+  height: 100%;
+  margin-top: 0;
+  background: url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2luZW1hfGVufDB8fDB8fA%3D%3D&w=1000&q=80");
+}
+.inputfield {
+  background-color: white;
+  border-radius: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#home {
+  text-align: center;
+  background-image: url(https://wallpaperaccess.com/full/1690368.jpg);
+  color: antiquewhite;
+  height: 100vh;
+  padding: 500px;
+  font-size: 500px;
+}
+
+#addcolor {
+  margin-top: 30px;
+  margin-left: 45%;
+}
+#addbutton {
+  width: 100px;
+  height: 30px;
+}
+p {
+  padding: 20px;
+}
+nav {
+  height: 50px;
+}
+.navbar {
+  position: sticky;
+  top: 0;
+}
+#colorinput {
+  margin-left: 25%;
+  height: 50px;
+  font-size: 30px;
+  margin-top: 25px;
 }
