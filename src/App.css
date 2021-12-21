@@ -36,7 +36,7 @@ body {
     rgba(255, 255, 255, 0.17) 0px 12px 13px,
     rgba(255, 255, 255, 0.09) 0px -3px 5px;
   position: relative;
-  top: -10px;
+  top: -5px;
 }
 
 .movie-specs {
@@ -113,11 +113,11 @@ button {
   background-color: rgb(237, 237, 243);
 }
 
-#App {
+/* .App {
   height: 100%;
   margin-top: 0;
   background: url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2luZW1hfGVufDB8fDB8fA%3D%3D&w=1000&q=80");
-}
+} */
 .inputfield {
   background-color: white;
   border-radius: 10px;
@@ -155,4 +155,20 @@ nav {
   height: 50px;
   font-size: 30px;
   margin-top: 25px;
+}
+
+.page-Not-Found {
+  text-align: center;
+}
+
+#caveman {
+  width: 60%;
+  align-items: center;
+}
+#page-404 {
+  font-size: 100px;
+}
+
+.details-movie {
+  text-align: center;
 }
