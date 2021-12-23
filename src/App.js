@@ -10,6 +10,7 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import Button from '@mui/material/Button';
+import ReplayIcon from '@mui/icons-material/Replay';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
@@ -24,46 +25,26 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import useWindowSize from 'react-use/lib/useWindowSize'
 import Confetti from 'react-confetti'
-// import AddIcon from '@mui/icons-material/Add';
-// import DeleteIcon from '@mui/icons-material/Delete';
-// import FormatAlignLeftIcon from '@mui/icons-material/FormatAlignLeft';
-// import FormatAlignCenterIcon from '@mui/icons-material/FormatAlignCenter';
-// import FormatAlignRightIcon from '@mui/icons-material/FormatAlignRight';
-// import LaptopIcon from '@mui/icons-material/Laptop';
-// import TvIcon from '@mui/icons-material/Tv';
-// import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
-// import ToggleButton from '@mui/material/ToggleButton';
-// import BottomNavigation from '@mui/material/BottomNavigation';
-// import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-// import FolderIcon from '@mui/icons-material/Folder';
-// import RestoreIcon from '@mui/icons-material/Restore';
-// import FavoriteIcon from '@mui/icons-material/Favorite';
-// import LocationOnIcon from '@mui/icons-material/LocationOn';
-// import Navbar from './componants/Navbar.js'
+import { styled } from '@mui/system';
+import { createMuiTheme, ThemeProvider } from '@mui/material/styles';
+import { Paper, label } from '@mui/material';
+import { createTheme } from '@mui/material/styles'
+import { dark } from '@mui/material/colors';
+import MaterialSwitch from '@mui/material/Switch';
+import MaterialUISwitch from '@mui/material/Switch';
 
-// import Badge from '@mui/material/Badge';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+import Typography from '@mui/material/Typography';
+import MenuItem from '@mui/material/MenuItem';
+import Stack from '@mui/material/Stack';
 
 
 function App() {
     const history = useHistory()
+    const [darkMode, setDarkMode] = useState(true);
 
     const movies = [
         {
@@ -215,6 +196,7 @@ function App() {
         }
     ];
     const [movieList, setMovieList] = useState(movies);
+
     return (
 
         <div>
@@ -222,13 +204,16 @@ function App() {
             <div className="App">
                 <AppBar position="static">
                     <Toolbar >
-                        <Button color="inherit" onClick={() => history.push('/Home')}>Home</Button>
-                        <Button color="inherit" onClick={() => history.push('/MyMovies')}>MyMovies</Button>
-                        <Button color="inherit" onClick={() => history.push('/AddColor')}>AddColor</Button>
-                        <Button color="inherit" onClick={() => history.push('/AddMovie')}>Add Movie</Button>
-                        <Button color="inherit" onClick={() => history.push('/tic-tac-toe')}>Tic-Tac-Toe</Button>
+                        <MenuItem color="inherit" onClick={() => history.push('/Home')}>Home</MenuItem>
+                        <MenuItem color="inherit" onClick={() => history.push('/MyMovies')}>MyMovies</MenuItem>
+                        <MenuItem color="inherit" onClick={() => history.push('/AddColor')}>AddColor</MenuItem>
+                        <MenuItem color="inherit" onClick={() => history.push('/AddMovie')}>Add Movie</MenuItem>
+                        <MenuItem color="inherit" onClick={() => history.push('/tic-tac-toe')}>Tic-Tac-Toe</MenuItem>
+
+
                     </Toolbar>
                 </AppBar>
+
                 <div>
 
                     {/*
@@ -260,6 +245,7 @@ function App() {
                         <Route path="/tic-tac-toe">
                             <TicTacToe />
                         </Route>
+
                         <Route path="**">
                             <NotFound />
                         </Route>
@@ -270,6 +256,25 @@ function App() {
 
     );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 function TicTacToe() {
@@ -293,7 +298,9 @@ function TicTacToe() {
     const [isXTurn, setIsXTurn] = useState(true);
 
     const handleClick = (index) => {
-        //Update only Untouched Boxes and No Winner
+        //1.Ift x's turn Display X or else 0
+        //Update only Untouched Boxes 
+        //3.Continue when no winner..
         console.log("clicked..", index);
         if (winner === null && !board[index]) {
             const boardCopy = [...board];
@@ -353,11 +360,17 @@ function TicTacToe() {
                     ))}
 
                 </div>
-                {winner ? <h2>Winner is {winner}  <p className="restart">Restart With</p> <br />  <button className="X">✖</button><button className="O">O</button>  </h2>
+                {winner ? <h2>Winner is {winner}   <br />  <button className="X">✖</button><button className="O">O</button> <br /><Button variant="contained" id="reset" onClick={() => setBoard([null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null])}> {<ReplayIcon />}  reset</Button>  </h2> : ""}
 
-                    : ""}
-
-
+                { }
 
 
             </div>
@@ -503,6 +516,9 @@ function ColorBox({ clr }) {
 
 
 function Movie({ name, poster, rating, summary, deleteButton, id }) {
+
+
+
     //conditional styling
     const style = rating >= 8.5 ? {
         color: 'green'
@@ -518,7 +534,7 @@ function Movie({ name, poster, rating, summary, deleteButton, id }) {
     return (
 
 
-        <div className="container">
+        <Card elevation={24} className="container">
 
             <img
                 className="movie-poster"
@@ -551,7 +567,7 @@ function Movie({ name, poster, rating, summary, deleteButton, id }) {
 
             </div>
 
-        </div >
+        </Card >
 
 
     );
@@ -643,32 +659,56 @@ function AddMovie({ movieList, setMovieList }) {
 
 
 
+
+
+
+
 function MovieList({ movies, setMovieList }) {
-
+    const [darkMode, setDarkMode] = useState(false)
+    const darkTheme = createTheme({
+        palette: {
+            mode: darkMode ? 'dark' : 'light',
+        },
+    });
     return (
-        <div className="movie-list">
-            {movies.map(({ name, poster, rating, summary }, index) => (
 
-                < Movie deleteButton={
+        <ThemeProvider theme={darkTheme}>
+            <Paper square variant="outlined" style={{ height: '100%' }}>
+                <div> ☀️<MaterialSwitch Checked={darkMode} onChange={() => setDarkMode(!darkMode)} />🌙</div>
+                <div className="movie-list">
+                    {movies.map(({ name, poster, rating, summary }, index) => (
 
-                    <p onClick={() => {
+                        < Movie deleteButton={
 
-                        const deleteIndex = index;
-                        //remove the move with delete index..
-                        //in other words allow other movies except deleteIndex(index)
-                        const remainingMovies = movies.filter((mv, idx) => deleteIndex !== idx)
-                        console.log(movies, remainingMovies)
-                        setMovieList(remainingMovies);
-                    }}>Delete</p>}
-                    id={index}
-                    name={name}
-                    poster={poster}
-                    rating={rating}
-                    summary={summary} />
-            ))}
+                            <p onClick={() => {
+
+                                const deleteIndex = index;
+                                //remove the move with delete index..
+                                //in other words allow other movies except deleteIndex(index)
+                                const remainingMovies = movies.filter((mv, idx) => deleteIndex !== idx)
+                                console.log(movies, remainingMovies)
+                                setMovieList(remainingMovies);
+                            }}>Delete</p>}
+                            id={index}
+                            name={name}
+                            poster={poster}
+                            rating={rating}
+                            summary={summary} />
+                    ))}
 
 
-        </div >
+                </div >
+
+
+            </Paper>
+        </ThemeProvider>
+
+
+
+
+
+
+
     );
 }
 
@@ -705,36 +745,6 @@ function Counter() {
 
 
 
-
-// function Navbar({ MyMovies, Home, AddColor, AddMovie, id }) {
-//   return (
-//     <nav className="navbar navbar-expand-lg py-5 navbar-dark bg-dark fs-5">
-//       <div className="container-fluid">
-
-//         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-//           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-//             <li className="nav-item">
-//               <Link className="nav-link active" aria-current="page" to="/Home"> <h3>Home</h3></Link>
-//             </li>
-//             <li className="nav-item">
-//               <Link className="nav-link" to="/MyMovies">My Movies</Link>
-//             </li>
-//             <li className="nav-item">
-//               <Link className="nav-link" to="/AddMovie">Add Movie</Link >
-//             </li>
-//             <li className="nav-item">
-//               <Link className="nav-link" to="/AddColor">Color Game</Link >
-//             </li>
-//             <li className="nav-item">
-//               <Link className="nav-link" to="/movies/:id">Details</Link >
-//             </li>
-//           </ul>
-
-//         </div>
-//       </div>
-//     </nav>
-//   )
-// }
 
 
 

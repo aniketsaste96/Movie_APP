@@ -15,6 +15,7 @@ body {
 .movie-name {
   font-size: 24px;
   text-shadow: 2px 2px 5px gray;
+  width: 105px;
 }
 
 .container {
@@ -176,12 +177,12 @@ nav {
 .game-box {
   height: 8rem;
   width: 8rem;
-  border: 2px solid black;
+  border: 4px solid black;
   font-size: 7rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: rgba(50, 50, 93, 0.25) 50px 100px 100px -20px,
+  box-shadow: rgba(50, 50, 93, 0.25) 60px 100px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 0px -30px,
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
@@ -195,7 +196,7 @@ nav {
 
 .game-box:hover {
   background-color: rgba(228, 217, 217, 0.561);
-  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -5px,
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -7px,
     rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 }
 
@@ -217,4 +218,22 @@ nav {
 
 .O {
   width: 120px;
+}
+
+Card {
+  border: 2px solid black;
+}
+
+#reset {
+  width: 120px;
+  margin-left: 145px;
+  margin-top: 30px;
+}
+
+.movie-rating {
+  margin-right: 5px;
+}
+
+.MuiSwitch-input {
+  margin-right: 10px;
 }
