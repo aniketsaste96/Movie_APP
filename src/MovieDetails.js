@@ -2,13 +2,25 @@ import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import Button from '@mui/material/Button';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import { useState, useEffect } from "react";
 
-export function MovieDetails({ movies }) {
+export function MovieDetails() {
     const history = useHistory();
-    const { id } = useParams();
+    const [movie, setMovie] = useState([]);
+
+    const { id } = useParams();//to get the id
     //how to get the particular movie when clicked 
-    const movie = movies[id];
-    console.log(movie);
+
+    //fetch movie by id
+    let getMovie = () => {
+        fetch(`https://61c412cff1af4a0017d9927b.mockapi.io/movies/${id}`, {
+            method: "GET"
+        }).then((data) => data.json())
+            .then((mv) => setMovie(mv));
+    }
+    useEffect(getMovie, []);
+    // var movie = movies[id];
+
     return (
 
         //Get the value from URL

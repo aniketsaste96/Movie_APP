@@ -23,6 +23,21 @@ export function Movie({ name, poster, rating, summary, deleteButton, id }) {
     const [show, setShow] = useState(true);
     const history = useHistory();
 
+    // let edit = () => {
+    //     fetch(`https://61c412cff1af4a0017d9927b.mockapi.io/movies/${id}`, {
+    //         method: "PUT",
+    //         body: JSON.stringify(data),
+    //         headers: {
+    //             "Content-type": "application/json"
+    //         }
+    //     })
+    // }
+    let editMovie = () => {
+
+    }
+
+
+
     return (
 
 
@@ -39,15 +54,21 @@ export function Movie({ name, poster, rating, summary, deleteButton, id }) {
                 <Counter />
 
             </div>
+            {
+                <p id="delete" variant="text" color="error" startIcon={<DeleteIcon />}>
+                    {deleteButton}
+                </p>}
+
+
+            <Button onClick={() => history.push(`/edit/${id}`)} variant="outlined" disableElevation>
+                Edit
+            </Button>
             <Button onClick={() => setShow(!show)} variant="contained" disableElevation>
                 Summary
             </Button>
 
-            <Button variant="outlined" color="error" startIcon={<DeleteIcon />}
-                onClick={() => (window.location.reload(false))}
-            >
-                {deleteButton}
-            </Button>
+
+
 
 
             {/* <q style={description} className="summary">{summary}</q> */}

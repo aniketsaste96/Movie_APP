@@ -1,32 +1,25 @@
 
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
-// import Button from '@mui/material/Button';
-
-
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab'
-import WestIcon from '@mui/icons-material/West';
+// import Tabs from '@mui/material/Tabs';
+// import Tab from '@mui/material/Tab'
+// import WestIcon from '@mui/icons-material/West';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import { styled } from '@mui/system';
+// import { styled } from '@mui/system';
 import { createMuiTheme, ThemeProvider } from '@mui/material/styles';
 import { Paper, label } from '@mui/material';
 import { createTheme } from '@mui/material/styles'
-import { dark } from '@mui/material/colors';
+// import { dark } from '@mui/material/colors';
 import MaterialSwitch from '@mui/material/Switch';
-import MaterialUISwitch from '@mui/material/Switch';
-
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-
-import Typography from '@mui/material/Typography';
+// import MaterialUISwitch from '@mui/material/Switch';
+// import CardActions from '@mui/material/CardActions';
+// import CardContent from '@mui/material/CardContent';
+// import Typography from '@mui/material/Typography';
 import MenuItem from '@mui/material/MenuItem';
-import Stack from '@mui/material/Stack';
+// import Stack from '@mui/material/Stack';
 import { TicTacToe } from './TicTacToe';
 import { MovieDetails } from './MovieDetails';
 import { NotFound } from './NotFound';
@@ -34,33 +27,24 @@ import { AddColor } from './AddColor';
 import { AddMovie } from './AddMovie';
 import { MovieList } from './MovieList';
 import { Home } from './Home';
+import { UpdateMovie } from './UpdateMovie.js'
 
 
 function App() {
     const history = useHistory()
     const [darkMode, setDarkMode] = useState(false)
+    const [movieList, setMovieList] = useState([]);
+
     const darkTheme = createTheme({
         palette: {
             mode: darkMode ? 'dark' : 'light',
+
         },
     });
-
-
-
-
-
-    const [movieList, setMovieList] = useState([]);
-
-    useEffect(() => {
-        fetch("https://61c412cff1af4a0017d9927b.mockapi.io/movies")
-            .then((data) => data.json())
-            .then((mvs) => setMovieList(mvs));
-
-    }, [])
     //[] empty dependency array because we want only once.
     // C -create- POST
-    // R  -Read - GET
-    // U  -Update -
+    // R  -Read - GET  check
+    // U  -Update -PUT
     // D -Delete-Delete
 
     return (
@@ -101,16 +85,19 @@ function App() {
                                 <Home />
                             </Route>
                             <Route path="/MyMovies">
-                                <MovieList movies={movieList} setMovieList={setMovieList} />
+                                <MovieList />
                             </Route>
                             <Route path="/movies/:id">
-                                <MovieDetails movies={movieList} />
+                                <MovieDetails />
                             </Route>
                             <Route path="/AddMovie">
-                                <AddMovie movieList={movieList} setMovieList={setMovieList} />
+                                <AddMovie />
                             </Route>
                             <Route path="/tic-tac-toe">
                                 <TicTacToe />
+                            </Route>
+                            <Route path="/edit/:id">
+                                <UpdateMovie />
                             </Route>
 
                             <Route path="**">

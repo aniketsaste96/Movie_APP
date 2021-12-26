@@ -4,6 +4,10 @@
 body {
   overflow: scroll;
 }
+#delete {
+  margin-left: 25%;
+  margin-bottom: 5px;
+}
 
 .movie-poster {
   width: 420px;
