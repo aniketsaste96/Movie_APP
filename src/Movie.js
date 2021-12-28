@@ -7,7 +7,7 @@ import InfoIcon from '@mui/icons-material/Info';
 import Card from '@mui/material/Card';
 import { Counter } from "./Counter";
 
-export function Movie({ name, poster, rating, summary, deleteButton, id }) {
+export function Movie({ name, poster, rating, summary, deleteButton, id, editButton }) {
 
 
 
@@ -54,33 +54,22 @@ export function Movie({ name, poster, rating, summary, deleteButton, id }) {
                 <Counter />
 
             </div>
-            {
-                <p id="delete" variant="text" color="error" startIcon={<DeleteIcon />}>
-                    {deleteButton}
-                </p>}
 
 
-            <Button onClick={() => history.push(`/edit/${id}`)} variant="outlined" disableElevation>
+            {/* <Button onClick={() => history.push(`/edit/${id}`)} variant="outlined" disableElevation>
                 Edit
-            </Button>
+            </Button> */}
             <Button onClick={() => setShow(!show)} variant="contained" disableElevation>
                 Summary
             </Button>
 
 
-
-
-
-            {/* <q style={description} className="summary">{summary}</q> */}
-            {/* {show ? <q className="summary">{summary}</q> : ""} */}
-
             {/* {conditional rendering} */}
             {show ? <p className="summary">{summary}</p> : ""}
-
-            <div>
-
+            <div id="bottom">
+                {deleteButton}
+                {editButton}
             </div>
-
         </Card>
 
 

@@ -241,3 +241,12 @@ Card {
 .MuiSwitch-input {
   margin-right: 10px;
 }
+
+#editIcon {
+  margin-left: 365px;
+}
+
+#bottom {
+  display: flex;
+  justify-content: end;
+}

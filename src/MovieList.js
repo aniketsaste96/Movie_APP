@@ -3,11 +3,12 @@ import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
-
+import EditIcon from '@mui/icons-material/Edit';
 
 
 
 export function MovieList() {
+    const history = useHistory();
 
 
     const [movies, setMovieList] = useState([]);
@@ -48,7 +49,17 @@ export function MovieList() {
                         movies.map(({ name, poster, rating, summary, id, trailer }, index) => (
                             <Movie
                                 key={id}
-                                deleteButton={<Button variant="outlined" color="error" onClick={() => { deleteMovie(id) }}> Delete</Button>}
+                                deleteButton=
+                                {<DeleteIcon
+                                    variant="outlined"
+                                    color="error"
+                                    onClick={() => { deleteMovie(id) }}> Delete</DeleteIcon>}
+                                editButton=
+                                {<EditIcon
+                                    id="editIcon"
+                                    variant="outlined"
+                                    color="secondary"
+                                    onClick={() => history.push(`/movie/edit/${id}`)}> Edit</EditIcon>}
                                 id={id}
                                 name={name}
                                 poster={poster}

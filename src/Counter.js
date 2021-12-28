@@ -3,9 +3,6 @@ import { useState, useEffect } from "react";
 import Button from '@mui/material/Button';
 
 
-
-
-
 export function Counter() {
     const [like, setLike] = useState(0);
     const [dislike, setDisLike] = useState(0);
@@ -13,9 +10,11 @@ export function Counter() {
     const decremnetLike = () => { setDisLike(dislike + 1); };
 
     useEffect(() => {
-        console.log("like is changed", like);
-        console.log("dislike is changed", dislike);
+        // console.log("like is changed", like);
+        // console.log("dislike is changed", dislike);
     }, [dislike])
+
+
     return (
         <div className="Badge">
 

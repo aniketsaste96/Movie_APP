@@ -27,7 +27,8 @@ import { AddColor } from './AddColor';
 import { AddMovie } from './AddMovie';
 import { MovieList } from './MovieList';
 import { Home } from './Home';
-import { UpdateMovie } from './UpdateMovie.js'
+import { EditMovie } from './UpdateMovie.js'
+import { BasicForm } from './BasicForm';
 
 
 function App() {
@@ -96,8 +97,11 @@ function App() {
                             <Route path="/tic-tac-toe">
                                 <TicTacToe />
                             </Route>
-                            <Route path="/edit/:id">
-                                <UpdateMovie />
+                            <Route path="/movie/edit/:id">
+                                <EditMovie />
+                            </Route>
+                            <Route path="/basicform">
+                                <BasicForm />
                             </Route>
 
                             <Route path="**">
@@ -111,26 +115,6 @@ function App() {
 
     );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

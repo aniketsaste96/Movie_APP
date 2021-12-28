@@ -3,7 +3,7 @@ import { useState } from "react";
 export function AddColor() {
     const [color, setColor] = useState("orange");
     const style = { background: color };
-    const [colorList, setColorList] = useState(["teal", "crimson", "orange"]);
+    const [colorList, setColorList] = useState([]);
     return (
         <div>
             <input
