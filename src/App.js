@@ -3,23 +3,13 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-// import Tabs from '@mui/material/Tabs';
-// import Tab from '@mui/material/Tab'
-// import WestIcon from '@mui/icons-material/West';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-// import { styled } from '@mui/system';
 import { createMuiTheme, ThemeProvider } from '@mui/material/styles';
 import { Paper, label } from '@mui/material';
 import { createTheme } from '@mui/material/styles'
-// import { dark } from '@mui/material/colors';
 import MaterialSwitch from '@mui/material/Switch';
-// import MaterialUISwitch from '@mui/material/Switch';
-// import CardActions from '@mui/material/CardActions';
-// import CardContent from '@mui/material/CardContent';
-// import Typography from '@mui/material/Typography';
 import MenuItem from '@mui/material/MenuItem';
-// import Stack from '@mui/material/Stack';
 import { TicTacToe } from './TicTacToe';
 import { MovieDetails } from './MovieDetails';
 import { NotFound } from './NotFound';
@@ -69,12 +59,12 @@ function App() {
                     <div>
 
                         {/*
-          A <Switch> looks through all its children <Route>
-          elements and renders the first one whose path
-          matches the current URL. Use a <Switch> any time
-          you have multiple routes, but you want only one
-          of them to render at a time
-        */}
+                                A <Switch> looks through all its children <Route>
+                                elements and renders the first one whose path
+                                matches the current URL. Use a <Switch> any time
+                                you have multiple routes, but you want only one
+                                of them to render at a time
+                                */}
                         <Switch>
                             <Route exact path="/">
                                 <Home />

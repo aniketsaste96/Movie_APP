@@ -46,18 +46,6 @@ function UpdateMovie({ movie }) {
 
     //useHistory to change the URL
     const history = useHistory();
-
-
-
-
-
-    // const [user, setUser] = useState(InitialValues);
-    // const [name, poster, ratings, summary] = user;
-
-
-
-
-
     const validationSchema = yup.object({
         name: yup.string().required("Please Enter name"),
         poster: yup.string().url().required("Please provide poster url"),
@@ -67,14 +55,7 @@ function UpdateMovie({ movie }) {
 
     })
     const { values, handleSubmit, handleChange, handleBlur, touched, errors } = useFormik({
-        initialValues: {
-            name: "",
-            poster: "",
-            rating: "",
-            summary: "",
-            trailer: ""
-
-        },
+        initialValues: movie,
         // validationSchema: formvalidateSchema,
         onSubmit: (EditMovie) => {
             console.log(JSON.stringify(EditMovie))

@@ -91,10 +91,6 @@ export function TicTacToe() {
                     null,
                     null,
                     null])}> {<ReplayIcon />}  reset</Button>  </h2> : ""}
-
-
-
-
             </div>
 
         </>
